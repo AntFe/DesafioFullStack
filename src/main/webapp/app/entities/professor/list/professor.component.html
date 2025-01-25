@@ -1,0 +1,145 @@
+<div>
+  <h2 id="page-heading" data-cy="ProfessorHeading">
+    <span jhiTranslate="plataformaAulasApp.professor.home.title">Professors</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.professor.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-professor"
+        [routerLink]="['/professor/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.professor.home.createLabel">Criar novo(a) Professor</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (professors().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="plataformaAulasApp.professor.home.notFound">Nenhum Professors encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nome">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.nome">Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sobrenome">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.sobrenome">Sobrenome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroTelefone">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.numeroTelefone">Numero Telefone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ingresso">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.ingresso">Ingresso</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="materiaLecionada">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.materiaLecionada">Materia Lecionada</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="registroProfissional">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.registroProfissional">Registro Profissional</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="servico.id">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.professor.servico">Servico</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (professor of professors(); track trackId(professor)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/professor', professor.id, 'view']">{{ professor.id }}</a>
+              </td>
+              <td>{{ professor.nome }}</td>
+              <td>{{ professor.sobrenome }}</td>
+              <td>{{ professor.email }}</td>
+              <td>{{ professor.numeroTelefone }}</td>
+              <td>{{ professor.ingresso | formatMediumDatetime }}</td>
+              <td>{{ professor.materiaLecionada }}</td>
+              <td>{{ professor.registroProfissional }}</td>
+              <td>
+                @if (professor.servico) {
+                  <div>
+                    <a [routerLink]="['/servico', professor.servico.id, 'view']">{{ professor.servico.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/professor', professor.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/professor', professor.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(professor)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

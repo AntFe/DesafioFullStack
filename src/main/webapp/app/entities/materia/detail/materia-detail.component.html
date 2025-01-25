@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (materia(); as materiaRef) {
+      <div>
+        <h2 data-cy="materiaDetailsHeading"><span jhiTranslate="plataformaAulasApp.materia.detail.title">Materia</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ materiaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.nomeDaMateria">Nome Da Materia</span></dt>
+          <dd>
+            <span>{{ materiaRef.nomeDaMateria }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.ementa">Ementa</span></dt>
+          <dd>
+            <span>{{ materiaRef.ementa }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.referenciasBibliograficas">Referencias Bibliograficas</span></dt>
+          <dd>
+            <span>{{ materiaRef.referenciasBibliograficas }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.aula">Aula</span></dt>
+          <dd>
+            @for (aula of materiaRef.aulas; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/aula', aula.id, 'view']">{{ aula?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.professor">Professor</span></dt>
+          <dd>
+            @if (materia()!.professor) {
+              <div>
+                <a [routerLink]="['/professor', materia()!.professor?.id, 'view']">{{ materiaRef.professor?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.materia.curso">Curso</span></dt>
+          <dd>
+            @for (curso of materiaRef.cursos; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/curso', curso.id, 'view']">{{ curso?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/materia', materiaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

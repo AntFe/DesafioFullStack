@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (curso(); as cursoRef) {
+      <div>
+        <h2 data-cy="cursoDetailsHeading"><span jhiTranslate="plataformaAulasApp.curso.detail.title">Curso</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ cursoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.curso.nome">Nome</span></dt>
+          <dd>
+            <span>{{ cursoRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.curso.materia">Materia</span></dt>
+          <dd>
+            @for (materia of cursoRef.materias; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/materia', materia.id, 'view']">{{ materia?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.curso.aluno">Aluno</span></dt>
+          <dd>
+            @for (aluno of cursoRef.alunos; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/aluno', aluno.id, 'view']">{{ aluno?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/curso', cursoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

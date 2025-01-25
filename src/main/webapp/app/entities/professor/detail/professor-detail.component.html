@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (professor(); as professorRef) {
+      <div>
+        <h2 data-cy="professorDetailsHeading"><span jhiTranslate="plataformaAulasApp.professor.detail.title">Professor</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ professorRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.nome">Nome</span></dt>
+          <dd>
+            <span>{{ professorRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.sobrenome">Sobrenome</span></dt>
+          <dd>
+            <span>{{ professorRef.sobrenome }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.email">Email</span></dt>
+          <dd>
+            <span>{{ professorRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.numeroTelefone">Numero Telefone</span></dt>
+          <dd>
+            <span>{{ professorRef.numeroTelefone }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.ingresso">Ingresso</span></dt>
+          <dd>
+            <span>{{ professorRef.ingresso | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.materiaLecionada">Materia Lecionada</span></dt>
+          <dd>
+            <span>{{ professorRef.materiaLecionada }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.registroProfissional">Registro Profissional</span></dt>
+          <dd>
+            <span>{{ professorRef.registroProfissional }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.professor.servico">Servico</span></dt>
+          <dd>
+            @if (professor()!.servico) {
+              <div>
+                <a [routerLink]="['/servico', professor()!.servico?.id, 'view']">{{ professorRef.servico?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/professor', professorRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

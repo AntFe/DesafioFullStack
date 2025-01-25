@@ -1,0 +1,29 @@
+{
+  "plataformaAulasApp": {
+    "aula": {
+      "home": {
+        "title": "Aulas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Aula",
+        "createOrEditLabel": "Criar ou editar Aula",
+        "notFound": "Nenhum Aulas encontrado"
+      },
+      "created": "Um novo Aula foi criado com o identificador {{ param }}",
+      "updated": "Aula com identificador {{ param }} foi actualizado",
+      "deleted": "Aula com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Aula {{ id }}?"
+      },
+      "detail": {
+        "title": "Aula"
+      },
+      "id": "ID",
+      "tituloAula": "Titulo Aula",
+      "descricao": "Descricao",
+      "linkVideo": "Link Video (Youtube, Google Drive, etc)",
+      "linkArquivos": "Link Arquivos (Google Drive)",
+      "resumo": "Resumo",
+      "materia": "Materia"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "plataformaAulasApp": {
+    "local": {
+      "home": {
+        "title": "Locals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Local",
+        "createOrEditLabel": "Criar ou editar Local",
+        "notFound": "Nenhum Locals encontrado"
+      },
+      "created": "Um novo Local foi criado com o identificador {{ param }}",
+      "updated": "Local com identificador {{ param }} foi actualizado",
+      "deleted": "Local com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Local {{ id }}?"
+      },
+      "detail": {
+        "title": "Local"
+      },
+      "id": "ID",
+      "nomeDoLocal": "Nome Do Local",
+      "pais": "Pais"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (aluno(); as alunoRef) {
+      <div>
+        <h2 data-cy="alunoDetailsHeading"><span jhiTranslate="plataformaAulasApp.aluno.detail.title">Aluno</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ alunoRef.id }}</span>
+          </dd>
+          <dt>
+            <span [ngbTooltip]="'plataformaAulasApp.aluno.help.nome' | translate" jhiTranslate="plataformaAulasApp.aluno.nome">Nome</span>
+          </dt>
+          <dd>
+            <span>{{ alunoRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.sobrenome">Sobrenome</span></dt>
+          <dd>
+            <span>{{ alunoRef.sobrenome }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.email">Email</span></dt>
+          <dd>
+            <span>{{ alunoRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.numeroTelefone">Numero Telefone</span></dt>
+          <dd>
+            <span>{{ alunoRef.numeroTelefone }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.matriculaData">Matricula Data</span></dt>
+          <dd>
+            <span>{{ alunoRef.matriculaData | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.maticula">Maticula</span></dt>
+          <dd>
+            <span>{{ alunoRef.maticula }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.endereco">Endereco</span></dt>
+          <dd>
+            @if (aluno()!.endereco) {
+              <div>
+                <a [routerLink]="['/endereco', aluno()!.endereco?.id, 'view']">{{ alunoRef.endereco?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.aluno.curso">Curso</span></dt>
+          <dd>
+            @for (curso of alunoRef.cursos; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/curso', curso.id, 'view']">{{ curso?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/aluno', alunoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

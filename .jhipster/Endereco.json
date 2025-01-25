@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060747"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "rua",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cep",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cidade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Endereco",
+  "relationships": [
+    {
+      "otherEntityName": "pais",
+      "relationshipName": "pais",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

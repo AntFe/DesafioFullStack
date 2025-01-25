@@ -1,0 +1,32 @@
+{
+  "plataformaAulasApp": {
+    "professor": {
+      "home": {
+        "title": "Professors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Professor",
+        "createOrEditLabel": "Criar ou editar Professor",
+        "notFound": "Nenhum Professors encontrado"
+      },
+      "created": "Um novo Professor foi criado com o identificador {{ param }}",
+      "updated": "Professor com identificador {{ param }} foi actualizado",
+      "deleted": "Professor com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Professor {{ id }}?"
+      },
+      "detail": {
+        "title": "Professor"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "sobrenome": "Sobrenome",
+      "email": "Email",
+      "numeroTelefone": "Numero Telefone",
+      "ingresso": "Ingresso",
+      "materiaLecionada": "Materia Lecionada",
+      "registroProfissional": "Registro Profissional",
+      "servico": "Servico",
+      "materia": "Materia"
+    }
+  }
+}

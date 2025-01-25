@@ -1,0 +1,16 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060745"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nomeDoLocal",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Local",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

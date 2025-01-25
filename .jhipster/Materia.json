@@ -1,0 +1,47 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060752"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nomeDaMateria",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ementa",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "referenciasBibliograficas",
+      "fieldType": "TextBlob"
+    }
+  ],
+  "name": "Materia",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "aula",
+      "otherEntityRelationshipName": "materia",
+      "relationshipName": "aula",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "professor",
+      "otherEntityRelationshipName": "materia",
+      "relationshipName": "professor",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "curso",
+      "otherEntityRelationshipName": "materia",
+      "relationshipName": "curso",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

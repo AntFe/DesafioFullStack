@@ -1,0 +1,34 @@
+{
+  "plataformaAulasApp": {
+    "aluno": {
+      "home": {
+        "title": "Alunos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Aluno",
+        "createOrEditLabel": "Criar ou editar Aluno",
+        "notFound": "Nenhum Alunos encontrado"
+      },
+      "created": "Um novo Aluno foi criado com o identificador {{ param }}",
+      "updated": "Aluno com identificador {{ param }} foi actualizado",
+      "deleted": "Aluno com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Aluno {{ id }}?"
+      },
+      "detail": {
+        "title": "Aluno"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "sobrenome": "Sobrenome",
+      "email": "Email",
+      "numeroTelefone": "Numero Telefone",
+      "matriculaData": "Matricula Data",
+      "maticula": "Maticula",
+      "endereco": "Endereco",
+      "curso": "Curso",
+      "help": {
+        "nome": "The firstname attribute."
+      }
+    }
+  }
+}

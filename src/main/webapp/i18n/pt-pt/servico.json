@@ -1,0 +1,28 @@
+{
+  "plataformaAulasApp": {
+    "servico": {
+      "home": {
+        "title": "Servicos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Servico",
+        "createOrEditLabel": "Criar ou editar Servico",
+        "notFound": "Nenhum Servicos encontrado"
+      },
+      "created": "Um novo Servico foi criado com o identificador {{ param }}",
+      "updated": "Servico com identificador {{ param }} foi actualizado",
+      "deleted": "Servico com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Servico {{ id }}?"
+      },
+      "detail": {
+        "title": "Servico"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "nomeDoServico": "Nome Do Servico",
+      "resumo": "Resumo",
+      "professor": "Professor"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-aluno-heading" data-cy="AlunoCreateUpdateHeading" jhiTranslate="plataformaAulasApp.aluno.home.createOrEditLabel">
+        Criar ou editar Aluno
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="plataformaAulasApp.aluno.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_nome"
+            [ngbTooltip]="'plataformaAulasApp.aluno.help.nome' | translate"
+            jhiTranslate="plataformaAulasApp.aluno.nome"
+            >Nome</label
+          >
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sobrenome" jhiTranslate="plataformaAulasApp.aluno.sobrenome">Sobrenome</label>
+          <input type="text" class="form-control" name="sobrenome" id="field_sobrenome" data-cy="sobrenome" formControlName="sobrenome" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="plataformaAulasApp.aluno.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numeroTelefone" jhiTranslate="plataformaAulasApp.aluno.numeroTelefone"
+            >Numero Telefone</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroTelefone"
+            id="field_numeroTelefone"
+            data-cy="numeroTelefone"
+            formControlName="numeroTelefone"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_matriculaData" jhiTranslate="plataformaAulasApp.aluno.matriculaData">Matricula Data</label>
+          <div class="d-flex">
+            <input
+              id="field_matriculaData"
+              data-cy="matriculaData"
+              type="datetime-local"
+              class="form-control"
+              name="matriculaData"
+              formControlName="matriculaData"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_maticula" jhiTranslate="plataformaAulasApp.aluno.maticula">Maticula</label>
+          <input type="text" class="form-control" name="maticula" id="field_maticula" data-cy="maticula" formControlName="maticula" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endereco" jhiTranslate="plataformaAulasApp.aluno.endereco">Endereco</label>
+          <select
+            class="form-control"
+            id="field_endereco"
+            data-cy="endereco"
+            name="endereco"
+            formControlName="endereco"
+            [compareWith]="compareEndereco"
+          >
+            <option [ngValue]="null"></option>
+            @for (enderecoOption of enderecosCollection; track $index) {
+              <option [ngValue]="enderecoOption">{{ enderecoOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_cursos" jhiTranslate="plataformaAulasApp.aluno.curso">Curso</label>
+          <select
+            class="form-control"
+            id="field_cursos"
+            data-cy="curso"
+            multiple
+            name="cursos"
+            formControlName="cursos"
+            [compareWith]="compareCurso"
+          >
+            @for (cursoOption of cursosSharedCollection; track $index) {
+              <option [ngValue]="cursoOption">{{ cursoOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

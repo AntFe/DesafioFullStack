@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060748"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Curso",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "materia",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "materia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "aluno",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "aluno",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

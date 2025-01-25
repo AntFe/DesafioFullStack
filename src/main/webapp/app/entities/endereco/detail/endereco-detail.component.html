@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (endereco(); as enderecoRef) {
+      <div>
+        <h2 data-cy="enderecoDetailsHeading"><span jhiTranslate="plataformaAulasApp.endereco.detail.title">Endereco</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">Código</span></dt>
+          <dd>
+            <span>{{ enderecoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.endereco.rua">Rua</span></dt>
+          <dd>
+            <span>{{ enderecoRef.rua }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.endereco.cep">Cep</span></dt>
+          <dd>
+            <span>{{ enderecoRef.cep }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.endereco.cidade">Cidade</span></dt>
+          <dd>
+            <span>{{ enderecoRef.cidade }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.endereco.estado">Estado</span></dt>
+          <dd>
+            <span>{{ enderecoRef.estado }}</span>
+          </dd>
+          <dt><span jhiTranslate="plataformaAulasApp.endereco.pais">Pais</span></dt>
+          <dd>
+            @if (endereco()!.pais) {
+              <div>
+                <a [routerLink]="['/pais', endereco()!.pais?.id, 'view']">{{ enderecoRef.pais?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Voltar</span>
+        </button>
+
+        <button type="button" [routerLink]="['/endereco', enderecoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

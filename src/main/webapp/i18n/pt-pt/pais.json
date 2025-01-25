@@ -1,0 +1,26 @@
+{
+  "plataformaAulasApp": {
+    "pais": {
+      "home": {
+        "title": "Pais",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Pais",
+        "createOrEditLabel": "Criar ou editar Pais",
+        "notFound": "Nenhum Pais encontrado"
+      },
+      "created": "Um novo Pais foi criado com o identificador {{ param }}",
+      "updated": "Pais com identificador {{ param }} foi actualizado",
+      "deleted": "Pais com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Pais {{ id }}?"
+      },
+      "detail": {
+        "title": "Pais"
+      },
+      "id": "ID",
+      "nomeDoPais": "Nome Do Pais",
+      "local": "Local",
+      "endereco": "Endereco"
+    }
+  }
+}

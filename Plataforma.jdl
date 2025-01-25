@@ -15,12 +15,15 @@ entity Endereco {
 }
 
 entity Curso {
-	cursoMatriculado String required
+	nome String required
 }
 
 entity Aula {
 	tituloAula String
-	description String
+	descricao String
+	linkVideo String
+    linkArquivos String
+    resumo TextBlob
 }
 
 /**
@@ -42,21 +45,22 @@ entity Professor {
 	sobrenome String
 	email String
 	numeroTelefone String
-	matriculaData Instant
+	ingresso Instant
 	materiaLecionada String
     registroProfissional String
 }
 
 entity Materia{
 	nomeDaMateria String
-	ementa String
-	referenciasBibliograficas String
+	ementa TextBlob
+	referenciasBibliograficas TextBlob
 }
 
 entity Servico {
 	startDate Instant
 	endDate Instant
-	sobre String
+	nomeDoServico String
+  	resumo TextBlob
 }
 
 enum Language {
@@ -64,7 +68,7 @@ enum Language {
 }
 
 relationship OneToOne {
-	Pais{Local} to Local
+	Pais{Local(nomeDoLocal)} to Local
 }
 
 relationship OneToOne {

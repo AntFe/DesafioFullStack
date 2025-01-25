@@ -1,0 +1,137 @@
+<div>
+  <h2 id="page-heading" data-cy="AlunoHeading">
+    <span jhiTranslate="plataformaAulasApp.aluno.home.title">Alunos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.aluno.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-aluno"
+        [routerLink]="['/aluno/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.aluno.home.createLabel">Criar novo(a) Aluno</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (alunos().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="plataformaAulasApp.aluno.home.notFound">Nenhum Alunos encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nome">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.nome">Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sobrenome">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.sobrenome">Sobrenome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroTelefone">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.numeroTelefone">Numero Telefone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="matriculaData">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.matriculaData">Matricula Data</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="maticula">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.maticula">Maticula</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="endereco.id">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.aluno.endereco">Endereco</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (aluno of alunos(); track trackId(aluno)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/aluno', aluno.id, 'view']">{{ aluno.id }}</a>
+              </td>
+              <td>{{ aluno.nome }}</td>
+              <td>{{ aluno.sobrenome }}</td>
+              <td>{{ aluno.email }}</td>
+              <td>{{ aluno.numeroTelefone }}</td>
+              <td>{{ aluno.matriculaData | formatMediumDatetime }}</td>
+              <td>{{ aluno.maticula }}</td>
+              <td>
+                @if (aluno.endereco) {
+                  <div>
+                    <a [routerLink]="['/endereco', aluno.endereco.id, 'view']">{{ aluno.endereco.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/aluno', aluno.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/aluno', aluno.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(aluno)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060751"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sobrenome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroTelefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ingresso",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "materiaLecionada",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registroProfissional",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Professor",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "servico",
+      "otherEntityRelationshipName": "professor",
+      "relationshipName": "servico",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "materia",
+      "otherEntityRelationshipName": "professor",
+      "relationshipName": "materia",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

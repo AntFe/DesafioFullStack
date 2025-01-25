@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Materia.
+    -->
+    <changeSet id="20250125060752-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="materia_id"
+                                 baseTableName="rel_materia__aula"
+                                 constraintName="fk_rel_materia__aula__materia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="materia"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="aula_id"
+                                 baseTableName="rel_materia__aula"
+                                 constraintName="fk_rel_materia__aula__aula_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="aula"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="professor_id"
+                                 baseTableName="materia"
+                                 constraintName="fk_materia__professor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="professor"
+                                 />
+    </changeSet>
+</databaseChangeLog>

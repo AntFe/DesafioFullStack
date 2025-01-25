@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060750"
+  },
+  "applications": "*",
+  "documentation": "Aluno",
+  "fields": [
+    {
+      "documentation": "The firstname attribute.",
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sobrenome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroTelefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "matriculaData",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "maticula",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Aluno",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "endereco",
+      "relationshipName": "endereco",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "curso",
+      "otherEntityRelationshipName": "aluno",
+      "relationshipName": "curso",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

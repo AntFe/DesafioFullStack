@@ -1,0 +1,29 @@
+{
+  "plataformaAulasApp": {
+    "materia": {
+      "home": {
+        "title": "Materias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Materia",
+        "createOrEditLabel": "Criar ou editar Materia",
+        "notFound": "Nenhum Materias encontrado"
+      },
+      "created": "Um novo Materia foi criado com o identificador {{ param }}",
+      "updated": "Materia com identificador {{ param }} foi actualizado",
+      "deleted": "Materia com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Materia {{ id }}?"
+      },
+      "detail": {
+        "title": "Materia"
+      },
+      "id": "ID",
+      "nomeDaMateria": "Nome Da Materia",
+      "ementa": "Ementa",
+      "referenciasBibliograficas": "Referencias Bibliograficas",
+      "aula": "Aula",
+      "professor": "Professor",
+      "curso": "Curso"
+    }
+  }
+}

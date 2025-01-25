@@ -1,0 +1,26 @@
+{
+  "plataformaAulasApp": {
+    "curso": {
+      "home": {
+        "title": "Cursos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Curso",
+        "createOrEditLabel": "Criar ou editar Curso",
+        "notFound": "Nenhum Cursos encontrado"
+      },
+      "created": "Um novo Curso foi criado com o identificador {{ param }}",
+      "updated": "Curso com identificador {{ param }} foi actualizado",
+      "deleted": "Curso com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Curso {{ id }}?"
+      },
+      "detail": {
+        "title": "Curso"
+      },
+      "id": "ID",
+      "nome": "Nome",
+      "materia": "Materia",
+      "aluno": "Aluno"
+    }
+  }
+}

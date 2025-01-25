@@ -1,0 +1,122 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-materia-heading" data-cy="MateriaCreateUpdateHeading" jhiTranslate="plataformaAulasApp.materia.home.createOrEditLabel">
+        Criar ou editar Materia
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="plataformaAulasApp.materia.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nomeDaMateria" jhiTranslate="plataformaAulasApp.materia.nomeDaMateria"
+            >Nome Da Materia</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomeDaMateria"
+            id="field_nomeDaMateria"
+            data-cy="nomeDaMateria"
+            formControlName="nomeDaMateria"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_ementa" jhiTranslate="plataformaAulasApp.materia.ementa">Ementa</label>
+          <textarea class="form-control" name="ementa" id="field_ementa" data-cy="ementa" formControlName="ementa"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_referenciasBibliograficas"
+            jhiTranslate="plataformaAulasApp.materia.referenciasBibliograficas"
+            >Referencias Bibliograficas</label
+          >
+          <textarea
+            class="form-control"
+            name="referenciasBibliograficas"
+            id="field_referenciasBibliograficas"
+            data-cy="referenciasBibliograficas"
+            formControlName="referenciasBibliograficas"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_aulas" jhiTranslate="plataformaAulasApp.materia.aula">Aula</label>
+          <select
+            class="form-control"
+            id="field_aulas"
+            data-cy="aula"
+            multiple
+            name="aulas"
+            formControlName="aulas"
+            [compareWith]="compareAula"
+          >
+            @for (aulaOption of aulasSharedCollection; track $index) {
+              <option [ngValue]="aulaOption">{{ aulaOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_professor" jhiTranslate="plataformaAulasApp.materia.professor">Professor</label>
+          <select
+            class="form-control"
+            id="field_professor"
+            data-cy="professor"
+            name="professor"
+            formControlName="professor"
+            [compareWith]="compareProfessor"
+          >
+            <option [ngValue]="null"></option>
+            @for (professorOption of professorsSharedCollection; track $index) {
+              <option [ngValue]="professorOption">{{ professorOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_cursos" jhiTranslate="plataformaAulasApp.materia.curso">Curso</label>
+          <select
+            class="form-control"
+            id="field_cursos"
+            data-cy="curso"
+            multiple
+            name="cursos"
+            formControlName="cursos"
+            [compareWith]="compareCurso"
+          >
+            @for (cursoOption of cursosSharedCollection; track $index) {
+              <option [ngValue]="cursoOption">{{ cursoOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

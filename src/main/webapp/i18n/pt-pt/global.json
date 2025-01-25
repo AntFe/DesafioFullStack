@@ -8,7 +8,15 @@
       "entities": {
         "main": "Entidades",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "local": "Local",
+        "pais": "Pais",
+        "endereco": "Endereco",
+        "curso": "Curso",
+        "aula": "Aula",
+        "aluno": "Aluno",
+        "professor": "Professor",
+        "materia": "Materia",
+        "servico": "Servico"
       },
       "account": {
         "main": "Conta",
@@ -50,7 +58,7 @@
         "authenticated": {
           "prefix": "Para ",
           "link": "entrar",
-          "suffix": ", utilize as seguintes contas:<br/>- Administrador (utilizador=\"admin\" e palavra-passe=\"admin\") <br/>- Utilizador (utilizador=\"user\" e palavra-passe=\"user\")."
+          "suffix": "utilize sua conta cadastrada na plataforma"
         },
         "register": {
           "noaccount": "Ainda não tem uma conta?",
@@ -84,7 +92,7 @@
       "id": "Código"
     },
     "ribbon": {
-      "dev": "Desenvolvimento"
+      "dev": ""
     },
     "item-count": "Mostrando {{first}} - {{second}} de {{total}} resultados."
   },

@@ -1,0 +1,113 @@
+<div>
+  <h2 id="page-heading" data-cy="MateriaHeading">
+    <span jhiTranslate="plataformaAulasApp.materia.home.title">Materias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.materia.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-materia"
+        [routerLink]="['/materia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="plataformaAulasApp.materia.home.createLabel">Criar novo(a) Materia</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (materias().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="plataformaAulasApp.materia.home.notFound">Nenhum Materias encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">Código</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nomeDaMateria">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.materia.nomeDaMateria">Nome Da Materia</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ementa">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.materia.ementa">Ementa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referenciasBibliograficas">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.materia.referenciasBibliograficas">Referencias Bibliograficas</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="professor.id">
+              <div class="d-flex">
+                <span jhiTranslate="plataformaAulasApp.materia.professor">Professor</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (materia of materias(); track trackId(materia)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/materia', materia.id, 'view']">{{ materia.id }}</a>
+              </td>
+              <td>{{ materia.nomeDaMateria }}</td>
+              <td>{{ materia.ementa }}</td>
+              <td>{{ materia.referenciasBibliograficas }}</td>
+              <td>
+                @if (materia.professor) {
+                  <div>
+                    <a [routerLink]="['/professor', materia.professor.id, 'view']">{{ materia.professor.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/materia', materia.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Visualizar</span>
+                  </a>
+
+                  <a [routerLink]="['/materia', materia.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(materia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

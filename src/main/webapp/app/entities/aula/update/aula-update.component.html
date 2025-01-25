@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-aula-heading" data-cy="AulaCreateUpdateHeading" jhiTranslate="plataformaAulasApp.aula.home.createOrEditLabel">
+        Criar ou editar Aula
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="plataformaAulasApp.aula.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tituloAula" jhiTranslate="plataformaAulasApp.aula.tituloAula">Titulo Aula</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tituloAula"
+            id="field_tituloAula"
+            data-cy="tituloAula"
+            formControlName="tituloAula"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" jhiTranslate="plataformaAulasApp.aula.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_linkVideo" jhiTranslate="plataformaAulasApp.aula.linkVideo">Link Video</label>
+          <input type="text" class="form-control" name="linkVideo" id="field_linkVideo" data-cy="linkVideo" formControlName="linkVideo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_linkArquivos" jhiTranslate="plataformaAulasApp.aula.linkArquivos">Link Arquivos</label>
+          <input
+            type="text"
+            class="form-control"
+            name="linkArquivos"
+            id="field_linkArquivos"
+            data-cy="linkArquivos"
+            formControlName="linkArquivos"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_resumo" jhiTranslate="plataformaAulasApp.aula.resumo">Resumo</label>
+          <textarea class="form-control" name="resumo" id="field_resumo" data-cy="resumo" formControlName="resumo"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_materias" jhiTranslate="plataformaAulasApp.aula.materia">Materia</label>
+          <select
+            class="form-control"
+            id="field_materias"
+            data-cy="materia"
+            multiple
+            name="materias"
+            formControlName="materias"
+            [compareWith]="compareMateria"
+          >
+            @for (materiaOption of materiasSharedCollection; track $index) {
+              <option [ngValue]="materiaOption">{{ materiaOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

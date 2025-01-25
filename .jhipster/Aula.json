@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060749"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "tituloAula",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "linkVideo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "linkArquivos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resumo",
+      "fieldType": "TextBlob"
+    }
+  ],
+  "name": "Aula",
+  "relationships": [
+    {
+      "otherEntityName": "materia",
+      "otherEntityRelationshipName": "aula",
+      "relationshipName": "materia",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

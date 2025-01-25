@@ -1,0 +1,29 @@
+{
+  "plataformaAulasApp": {
+    "endereco": {
+      "home": {
+        "title": "Enderecos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Endereco",
+        "createOrEditLabel": "Criar ou editar Endereco",
+        "notFound": "Nenhum Enderecos encontrado"
+      },
+      "created": "Um novo Endereco foi criado com o identificador {{ param }}",
+      "updated": "Endereco com identificador {{ param }} foi actualizado",
+      "deleted": "Endereco com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Endereco {{ id }}?"
+      },
+      "detail": {
+        "title": "Endereco"
+      },
+      "id": "ID",
+      "rua": "Rua",
+      "cep": "Cep",
+      "cidade": "Cidade",
+      "estado": "Estado",
+      "pais": "Pais",
+      "aluno": "Aluno"
+    }
+  }
+}

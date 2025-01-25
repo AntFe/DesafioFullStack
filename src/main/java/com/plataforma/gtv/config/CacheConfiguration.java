@@ -52,6 +52,22 @@ public class CacheConfiguration {
             createCache(cm, com.plataforma.gtv.domain.User.class.getName() + ".authorities");
             createCache(cm, com.plataforma.gtv.domain.PersistentToken.class.getName());
             createCache(cm, com.plataforma.gtv.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.plataforma.gtv.domain.Local.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Pais.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Endereco.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Curso.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Curso.class.getName() + ".materias");
+            createCache(cm, com.plataforma.gtv.domain.Curso.class.getName() + ".alunos");
+            createCache(cm, com.plataforma.gtv.domain.Aula.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Aula.class.getName() + ".materias");
+            createCache(cm, com.plataforma.gtv.domain.Aluno.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Aluno.class.getName() + ".cursos");
+            createCache(cm, com.plataforma.gtv.domain.Professor.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Professor.class.getName() + ".materias");
+            createCache(cm, com.plataforma.gtv.domain.Materia.class.getName());
+            createCache(cm, com.plataforma.gtv.domain.Materia.class.getName() + ".aulas");
+            createCache(cm, com.plataforma.gtv.domain.Materia.class.getName() + ".cursos");
+            createCache(cm, com.plataforma.gtv.domain.Servico.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

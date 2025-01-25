@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20250125060753"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "nomeDoServico",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resumo",
+      "fieldType": "TextBlob"
+    }
+  ],
+  "name": "Servico",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "professor",
+      "otherEntityRelationshipName": "servico",
+      "relationshipName": "professor",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
