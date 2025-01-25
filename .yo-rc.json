@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "session",
+    "baseName": "plataformaAulas",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angular",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1737784991334,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableTranslation": true,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.8.0",
+    "languages": ["pt-pt"],
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "pt-pt",
+    "packageName": "com.plataforma.gtv",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "rememberMeKey": "2b04601888414bb93f9859d24a5e15849cfd8016aac65c18209c8b80826244ed49bfad2240688a84037348f9f9059f52fd99",
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}

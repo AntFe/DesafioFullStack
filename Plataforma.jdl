@@ -1,0 +1,106 @@
+
+entity Local {
+	nomeDoLocal String
+}
+
+entity Pais {
+	nomeDoPais String
+}
+
+entity Endereco {
+	rua String
+	cep String
+	cidade String
+	estado String
+}
+
+entity Curso {
+	cursoMatriculado String required
+}
+
+entity Aula {
+	tituloAula String
+	description String
+}
+
+/**
+ * Aluno
+ */
+entity Aluno {
+	/**
+	* The firstname attribute.
+	*/
+	nome String
+	sobrenome String
+	email String
+	numeroTelefone String
+	matriculaData Instant
+	maticula String
+}
+entity Professor {
+	nome String
+	sobrenome String
+	email String
+	numeroTelefone String
+	matriculaData Instant
+	materiaLecionada String
+    registroProfissional String
+}
+
+entity Materia{
+	nomeDaMateria String
+	ementa String
+	referenciasBibliograficas String
+}
+
+entity Servico {
+	startDate Instant
+	endDate Instant
+	sobre String
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToOne {
+	Pais{Local} to Local
+}
+
+relationship OneToOne {
+	Endereco{Pais} to Pais
+}
+
+relationship OneToOne {
+	Aluno{Endereco} to Endereco
+}
+
+relationship ManyToMany {
+	Aluno to Curso
+}
+relationship ManyToMany{
+	Curso to Materia
+}
+relationship ManyToMany{
+	Materia to Aula
+}
+relationship OneToMany{
+	Professor to Materia
+}
+relationship OneToOne{
+	Professor to Servico
+}
+
+// Set pagination options
+paginate Servico, Professor, Aluno, Curso, Materia with infinite-scroll
+paginate Servico with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Professor, Servico
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+
